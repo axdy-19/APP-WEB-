@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección de Jóvenes</title>
+    <style>
+       .botones {
+            display: flex;
+            justify-content: center;
+            gap: 20px;    
+        }
+       .chat-busqueda {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+       }
+       body {
+            background-color: #EDEDED;
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+       .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+       }
+        #historial {
+    background: rgba(0,0,0,0.8);
+    padding: 10px;
+    width: 300px;
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    border-radius: 10px;
+}
+.chat-box {
+    background: #444;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+}
+button {
+    margin: 5px;
+}
+       
+   </style>
+</head>
+<body>
+    <header>
+        <div class="menu-icon" onclick="toggleHistorial()">☰</div> 
+    </header>
+    <div id="historial" class="{% if mostrar_historial %}activo{% endif %}">
+        <a href="{{url_for('nuevo_chat')}}"
+        class="boton-nuevo">+ Nuevo Chat</a>
+        <ul id="lista-historial"></ul>
+            {% for chat in historial %}
+            <li>
+                {{ chat.nombre }}
+               
+               <a href="{{url_for('borrar_chat', chat_id=chat.id)}}" class="borrar">🗑️</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="{{url_for('borrar_todo')}}" class="borrar_todo">🗑️ Borrar Todo</a>
+        </div>
+        </form>
+    <main>
+    <h1><center>
+        ¡Bienvenid@ a la Sección de Jóvenes!</center></h1>
+    <div class="chat-busqueda">
+        <input type="text" class="chat" id="chat" placeholder="Escribe tu mensaje..." enabled/>
+        <button class="chat-button" enabled>Enviar</button>
+
+        {% if mensaje_usuario %}
+            <p><strong>Tú:</strong>{{ mensaje_usuario }}</p>
+            <p><strong>ChatSCB:</strong>{{ respuesta_bot }}</p>
+        {% endif %}
+    </main>
+    <script>
+        function toggleHistorial() {
+            var panel = document.getElementById("historial");
+            panel.style.display = (panel.style.display === "none") ? "block" : "none";
+        }
+    </script>
+
+       <a href="/agregar_respuesta"><button type="submit">Agregar Respuesta</button>
+       <a href="/editar_respuesta"><button type="submit">Editar Respuesta</a>
+       <a href="/eliminar_respuesta"><button type="submit">Eliminar Respuesta</a>
+    <div class="botones">
+    <a href="/" method="GET">
+        <button>Volver al inicio</button>
+    </a>
+    </div>
+</body>
+</html>

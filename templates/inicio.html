@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio</title>
+    <style>
+        .botones  {
+            text-decoration: none;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 18px;
+            min-width: 180px;            
+            height: 50px;
+            margin-bottom: 350px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 10px;
+        }
+        body {
+          background-color: #EDEDED;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+        h1 {
+          text-align: center;
+          margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>¡¡¡Bienvenid@ a ChatSCB!!!</center></h1>
+    <div class="botones">
+        <a href="{{ url_for('registro') }}">
+        <a href="/registro?seccion=Jóvenes">
+            <button type="submit">Jóvenes</button>
+        </a>
+        </form>
+        <a href="{{ url_for('registro_mayores') }}">
+        <a href="/registro_mayores?seccion=Mayores"> 
+            <button type="submit">Mayores</button>
+       </a> 
+       </form>
+    </div>
+
+</body>
+</html>
